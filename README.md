@@ -445,7 +445,14 @@ WHERE f.region <> 'unknown'
 GROUP BY f.region
 ORDER BY total_charges DESC;
 ```
-Tento graf zobrazuje regióny podľa celkovej sumy vyúčtovaných poplatkov (`totalcharges`). Pomáha identifikovať, v ktorých regiónoch vzniká najvyššie množstvo nákladov. Môže slúžiť na strategické rozhodovanie a plánovanie.
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf1.png" >
+  <br>
+  <em>Graf 1</em>
+  <br>
+</p>
+Tento graf zobrazuje regióny podľa celkovej sumy vyúčtovaných poplatkov (`totalcharges`). Pomáha identifikovať, v ktorých regiónoch vzniká najvyššie množstvo nákladov. Môže slúžiť na strategické rozhodovanie a plánovanie.Z údajov vyplýva že najviac nákladov ma región `Southwest`
+
 
 **`Graf 2:`** Number of claims by each admission type
 ```sql
@@ -457,7 +464,14 @@ INNER JOIN dim_patient p ON f.patient_id = p.dim_patient_id
 GROUP BY p.admission_type
 ORDER BY num_claims DESC;
 ```
-Tento graf ukazuje počet nárokov (`claims`) podľa typu prijatia pacienta. Umožňuje porovnať, aké typy prijatí sú najčastejšie .
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf2.png" >
+  <br>
+  <em>Graf 2</em>
+  <br>
+</p>
+
+Tento graf ukazuje počet nárokov (`claims`) podľa typu prijatia pacienta. Umožňuje porovnať, aké typy prijatí sú najčastejšie .Z údajov vyplýva že najväčší počet nárokov ma typ 3 (`87`), a neznámy typ (`0`) ma až 53 nároky.
 
 **`Graf 3:`** Total Units Billed by Quarter in 2022
 ```sql
@@ -471,8 +485,14 @@ WHERE d.year = 2022
 GROUP BY d.year, d.quarter
 ORDER BY d.year, d.quarter;
 ```
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf3.png" >
+  <br>
+  <em>Graf 3</em>
+  <br>
+</p>
 
-Tento graf vizualizuje celkový počet jednotiek (`total_units`) vyfakturovaných v jednotlivých kvartáloch roku 2022. Umožňuje sledovať sezónne trendy a identifikovať kvartály s vyšším využitím služieb.
+Tento graf vizualizuje celkový počet jednotiek (`total_units`) vyfakturovaných v jednotlivých kvartáloch roku 2022. Umožňuje sledovať sezónne trendy a identifikovať kvartály s vyšším využitím služieb.Tento trend naznačuje, že najväčší počet jednotiek bol v `3.` kvartáli a že trend bol rastúci od `1.` po `3.` kvartál a následne klesajúci od `3.` po `4.` kvartál.
 
 **`Graf 4:`** Top 5 payers by number of claims
 ```sql
@@ -486,8 +506,14 @@ GROUP BY p.payer_name
 ORDER BY num_claims DESC
 LIMIT 5;
 ```
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf4.png" >
+  <br>
+  <em>Graf 4</em>
+  <br>
+</p>
 
-Graf zobrazuje 5 payerov s najvyšším počtom nárokov. Pomáha identifikovať, ktorí poistenia platia najviac nárokov a poskytuje prehľad o objeme spolupráce s jednotlivými payermi.
+Graf zobrazuje 5 payerov s najvyšším počtom nárokov. Pomáha identifikovať, ktorí poistenia platia najviac nárokov a poskytuje prehľad o objeme spolupráce s jednotlivými payermi.Graf nám poskytuje informáciu, že RESEARCH MEDICARE AZ a MEDICARE A AND B WPS zdieľajú rovnaké miesto v top 5 s rovnakým počtom claimov a UHC COMMUNITY PLAN má najvyšší počet claimov
 
 **`Graf 5:`** Top payers by amount paid
 ```sql
@@ -500,8 +526,14 @@ GROUP BY p.payer_name
 ORDER BY total_paid DESC
 LIMIT 10;
 ```
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf5.png" >
+  <br>
+  <em>Graf 5</em>
+  <br>
+</p>
 
-Tento graf zobrazuje top payerov podľa celkovej sumy zaplatených nárokov. Je užitočný na identifikáciu, ktorí payeri prispievajú najviac k príjmom a poskytuje informácie pre finančné plánovanie a reporting.
+Tento graf zobrazuje top payerov podľa celkovej sumy zaplatených nárokov. Je užitočný na identifikáciu, ktorí payeri prispievajú najviac k príjmom a poskytuje informácie pre finančné plánovanie a reporting. Dáta ukazujú, že MEDICARE je absolútnym lídrom v top 10 platcoch podľa vyplatenej sumy, pričom vyplatil takmer štvornásobok sumy v porovnaní s druhým miestom, ktorým je AARP HEALTHCARE OPTIONS.
 
 **`Graf 6:`** Total Amount Paid vs Total Charges
 ```sql
@@ -511,9 +543,19 @@ SELECT
 FROM fact_claims
 WHERE totalcharges > 0 AND total_paid_amount > 0;
 ```
+<p align="center">
+  <img src="https://github.com/awwdwwp/HospitalClaims-ETL/blob/921a113f457c79c9f43db04313c96696568d2463/img/graf6.png" >
+  <br>
+  <em>Graf 6</em>
+  <br>
+</p>
 
-Tento graf porovnáva vyúčtované poplatky (`totalcharges`) a skutočne zaplatené sumy (`total_paid_amount`). Vizualizácia ukazuje prípadné rozdiely medzi nákladmi a úhradami.
+Tento graf porovnáva vyúčtované poplatky (`totalcharges`) a skutočne zaplatené sumy (`total_paid_amount`). Vizualizácia ukazuje prípadné rozdiely medzi nákladmi a úhradami. Os X zobrazuje hodnotu TOTALCHARGES a os Y zobrazuje hodnotu TOTAL_AMOUNT_PAID.Väčšina hodnôt má podobnú vyplatenú sumu, avšak niektoré vykazujú výrazný rozdiel medzi TOTALCHARGES a TOTAL_AMOUNT_PAID
 
----
+
 **Dashboard umožňuje jednoduché na pochopenie interpretácie komplexných dát a je veľmi užitočný na trendy údajov, finančnú štatistiku a porovnávanie podľa numerických hodnôt a dátumov.**
 
+
+---
+## **Autor:** Andrii Bobonych
+---
