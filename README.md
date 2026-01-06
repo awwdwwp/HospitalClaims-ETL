@@ -11,7 +11,18 @@ Zdrojové dáta pochádzajú z datasetu FinThrive Hospital Claims & Remmitance D
 - Rozdiely medzi účtovanými (billed), uhradenými (paid) a upravenými (adjusted) sumami,
 - Správanie poisťovni,
 - využívanie zdravotnej starostlivosti v čase,
-- porovnanie claimov. 
+- porovnanie claimov.
+
+### Prečo bol zvolený tento dataset
+Dataset bol vybraný preto, že predstavuje dáta z oblasti zdravotníctva. Obsahuje viacero entít, časový rozmer a finančné metriky a umožňuje demonštrovať použitie analytických funkcií .
+
+### Podporovaný biznis proces
+Dáta podporujú biznis proces spracovania zdravotníckych nárokov (claims processing), ktorý zahŕňa:
+- poskytovanie zdravotnej starostlivosti,
+- fakturáciu výkonov,
+- úhrady zo strany poisťovní,
+- finančné vyrovnania a úpravy (adjustments).
+
 
 Dataset obsahuje 8 tabuliek:
 - `CLAIMDETAIL` – dáta claimov
