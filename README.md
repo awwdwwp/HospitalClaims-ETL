@@ -13,6 +13,9 @@ Zdrojové dáta pochádzajú z datasetu FinThrive Hospital Claims & Remmitance D
 - využívanie zdravotnej starostlivosti v čase,
 - porovnanie claimov.
 
+Téma projektu je zameraná na analýzu zdravotníckych nárokov (claims) a súvisiacich finančných tokov medzi poskytovateľmi zdravotnej starostlivosti, pacientmi a poisťovňami.
+Pre spracovanie bol zvolený dataset obsahujúci údaje o nárokoch, výkonoch, zariadeniach, pacientoch a úhradách.
+
 ### Prečo bol zvolený tento dataset
 Dataset bol vybraný preto, že predstavuje dáta z oblasti zdravotníctva. Obsahuje viacero entít, časový rozmer a finančné metriky a umožňuje demonštrovať použitie analytických funkcií .
 
