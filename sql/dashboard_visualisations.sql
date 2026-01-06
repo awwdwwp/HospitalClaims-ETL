@@ -54,3 +54,10 @@ ON f.dim_facility_id = c.facility_id
 WHERE f.region <> 'unknown'
 GROUP BY f.region
 ORDER BY total_charges DESC;
+
+-- Graph 6: Total Amount Paid and Total Charges Amount comparison
+SELECT
+totalcharges,
+total_paid_amount,
+FROM fact_claims
+WHERE totalcharges > 0 AND total_paid_amount > 0;
